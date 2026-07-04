@@ -56,3 +56,11 @@ def send_result_to_file(results:list[dict], path:str) -> None:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(results)
+
+    def get_record_count(records):
+        return len(records)
+
+    def test_get_record_count():
+        records = [{"id": 1}, {"id": 2}, {"id": 3}]
+        result =  get_record_count(records)
+        assert result == 3, f"Expected 3, but got {result}"
