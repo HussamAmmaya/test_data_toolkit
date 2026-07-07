@@ -1,3 +1,4 @@
+[![Run Tests](https://github.com/HussamAmmaya/test_data_toolkit/actions/workflows/tests.yml/badge.svg)](https://github.com/HussamAmmaya/test_data_toolkit/actions/workflows/tests.yml)
 # Test Data Toolkit
 
 A simple Python toolkit for reading test data from CSV files, extracting values,
