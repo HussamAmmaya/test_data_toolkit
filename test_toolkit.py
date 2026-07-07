@@ -38,4 +38,4 @@ def test_read_test_data_reads_csv_file_correctly(sample_csv_file):
 def test_get_value_by_key_various_keys(key, expected):
     records = [{"id": 1, "status": "pass"}]
     result = get_value_by_key(records, key)
-    assert result == records
+    assert result == expected
