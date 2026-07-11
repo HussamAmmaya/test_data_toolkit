@@ -57,10 +57,13 @@ def send_result_to_file(results:list[dict], path:str) -> None:
         writer.writeheader()
         writer.writerows(results)
 
-    def get_record_count(records):
-        return len(records)
+def get_record_count(records: list[dict]) -> int:
+        """Return the number of records in the dataset.
 
-    def test_get_record_count():
-        records = [{"id": 1}, {"id": 2}, {"id": 3}]
-        result =  get_record_count(records)
-        assert result == 3, f"Expected 3, but got {result}"
+        Args:
+            records: List of record dictionaries.
+
+        Returns:
+            int: The number of records.
+        """
+        return len(records)

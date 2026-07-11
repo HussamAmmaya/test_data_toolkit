@@ -1,11 +1,13 @@
 import pytest
 import csv
+from toolkit import get_value_by_key, read_test_data, send_result_to_file, get_record_count
+
 
 @pytest.mark.smoke
 def test_sanity():
     assert True
 
-from toolkit import get_value_by_key, read_test_data, send_result_to_file
+
 
 def test_get_value_by_key_returns_correct_values():
     records = {"id": 1, "status": "pass"}
@@ -39,3 +41,19 @@ def test_get_value_by_key_various_keys(key, expected):
     records = [{"id": 1, "status": "pass"}]
     result = get_value_by_key(records, key)
     assert result == expected
+
+
+def test_get_record_count(sample_csv_file):
+    records = read_test_data(sample_csv_file)
+    assert get_record_count(records) == 1
+
+def test_read_test_data_missing_file(tmp_path):
+    missing = tmp_path / "does_not_exist.csv"
+    with pytest.raises(FileNotFoundError):
+        read_test_data(missing)
+
+def test_send_result_to_file_empty_list(tmp_path):
+    output_file = tmp_path / "output.csv"
+    with pytest.raises(ValueError):
+        send_result_to_file([], output_file)
+
